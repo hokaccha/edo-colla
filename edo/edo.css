@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.edo {
+  position: relative;
+  width: 300px;
+}
+
+.edo img {
+  width: 300px;
+}
+
+.edo .paper {
+  position: absolute;
+  top: 45px;
+  right: 35px;
+  display: table;
+}
+
+.edo .text {
+  font-weight: bold;
+  font-family: serif;
+  font-size: 46px;
+  width: 1px;
+  display: table-cell;
+  height: 285px;
+  vertical-align: middle;
+  overflow: hidden;
+  word-break: break-all;
+  text-align: center;
+}
