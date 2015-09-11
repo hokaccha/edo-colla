@@ -23,7 +23,7 @@ app.get('/zudo', function(req, res) {
   capture({
     target: 'zudo',
     text: req.query.text,
-    size: { width: 685, height: 395 }
+    size: { width: 640, height: 328 }
   }, function(err, filePath) {
     if (err) {
       console.error(err);
