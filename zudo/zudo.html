@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Sample</title>
+<link rel="stylesheet" href="zudo.css">
+</head>
+<body>
+<div class="zudo">
+  <img src="./zudo.png" width="250">
+  <div class="right">
+    <div class="textBox">
+      <div class="text"></div>
+    </div>
+  </div>
+</div>
+<script>
+document.querySelector('.text').textContent = decodeURIComponent(location.search.slice(1));
+</script>
+</body>
+</html>

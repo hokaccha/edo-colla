@@ -1,27 +1,32 @@
-var express = require('express');
-var webshot = require('webshot');
 var fs = require('fs');
+var express = require('express');
 var app = express();
-
-var opt = { shotSize: { width: 300, height: 427 } };
+var capture = require('./capture');
 
 app.get('/edo', function(req, res) {
-  var text = req.query.text;
-
-  if (!text) {
-    return res.end('error!');
-  }
-
-  var encodedText = encodeURIComponent(text);
-  var filePath = __dirname + '/images/' + encodedText + '.jpg';
-
-  if (fs.existsSync(filePath)) {
-    return fs.createReadStream(filePath).pipe(res);
-  }
-
-  webshot('file://' + __dirname + '/edo/edo.html?' + encodedText, filePath, opt, function(err) {
+  capture({
+    target: 'edo',
+    text: req.query.text,
+    size: { width: 300, height: 427 }
+  }, function(err, filePath) {
     if (err) {
-      console.log(err);
+      console.error(err);
+      res.end('error!');
+    }
+    else {
+      fs.createReadStream(filePath).pipe(res);
+    }
+  });
+});
+
+app.get('/zudo', function(req, res) {
+  capture({
+    target: 'zudo',
+    text: req.query.text,
+    size: { width: 685, height: 395 }
+  }, function(err, filePath) {
+    if (err) {
+      console.error(err);
       res.end('error!');
     }
     else {
